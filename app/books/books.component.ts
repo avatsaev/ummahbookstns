@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import Book from "../book/book";
+import BooksService from "./books.service";
+import {Router} from "@angular/router";
 
 
 
@@ -12,19 +14,31 @@ import Book from "../book/book";
 
 export class BooksComponent implements OnInit {
 
-  books:Array<Book>;
+  books:Array<Book>
+
   isBusy:boolean;
 
   constructor(
-
+      private booksService:BooksService,
+      private router:Router
   ){}
 
-  showDetails(e){
-    //this.router.navigate(["details", e.index])
+
+  showBook(book:Book){
+
+    console.dump(book)
+    this.router.navigate(["book",book.objectID])
   }
 
 
+
   ngOnInit(){
+
+    this.booksService.getAllBooks()
+        .then((books:Array<Book>) => this.books = books)
+        .catch((e)=> console.dump(e));
+
+
     // this.isBusy = true
     // this.api.get_all_data().then((res:Array<Country> = []) => {
     //   this.countries = res

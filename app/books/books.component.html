@@ -5,31 +5,28 @@
 
   <ActionBar title="Catalog">
 
-    <ActionItem (tap)="onAdd()"
-                ios.systemIcon="16" ios.position="right"
-                text="delete" android.position="popup"></ActionItem>
 
   </ActionBar>
 
   <StackLayout class="page p-t-10" style="color: white">
-    <ActivityIndicator [busy]="isBusy" ></ActivityIndicator>
+    <!--<ActivityIndicator [busy]="isBusy" ></ActivityIndicator>-->
   </StackLayout>
 
 
-  <StackLayout  #initialContainer
+  <StackLayout
                class="initial-container">
 
 
 
 
 
-    <ListView [items]="countries" (itemTap)="showDetails($event)" class="list-group">
+    <ListView [items]="books"  class="list-group">
 
       <ListView.itemTemplate>
-        <template let-country="item" >
+        <template  let-book="item">
 
-          <GridLayout class=" visible list-group-item" >
-            <Label [text]="country.title"  class="label-item"></Label>
+          <GridLayout (tap)="showBook(book)" class=" visible list-group-item" >
+            <Label [text]="book.title"  class="label-item"></Label>
           </GridLayout>
 
         </template>

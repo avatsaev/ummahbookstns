@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import BooksService from '../books/books.service'
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-home",
@@ -9,20 +9,14 @@ import BooksService from '../books/books.service'
 
 export class HomeComponent implements OnInit {
 
-
-
   constructor(
-    private booksService:BooksService
+    private router:Router
   ){}
 
-  listBooks(){
-      console.log("request..")
-    this.booksService.getAllBooks()
-        .then((r) => {
-          console.log("getting books...")
-          console.dump(r)
-        }).catch((e)=> console.dump(e));
+  showBooks(e){
+    this.router.navigate(["books"])
   }
+
 
   ngOnInit(){
     // this.isBusy = true
