@@ -1,25 +1,21 @@
 import { getFile, getImage, getJSON, getString, request } from "http";
 import { Injectable } from "@angular/core";
 import Book from "../book/book";
-import {PromiseObservable} from "rxjs/observable/PromiseObservable";
-import {resolveFileName} from "file-system/file-name-resolver";
-
-
 
 @Injectable()
 
 export default class BooksService{
 
-  private endpointUrl:string = "http://192.168.1.32:8080/";
+  private endpointUrl:string = "http://172.18.21.113:8080/";
 
-  bookList:Array<Book>
+  bookList:Book[]
 
   constructor(){
-    this.bookList = []
+    this.bookList = new Array<Book>()
   }
 
 
-  fetchAllBooks():Promise<Array<Book>>{
+  fetchAllBooks():Promise<Book[]>{
 
     return new Promise((resolve) => {
 
@@ -28,11 +24,18 @@ export default class BooksService{
 
         for(let bookJSON of res.books){
 
-          this.bookList.push(new Book({
+          let book_ = new Book({
             objectID: bookJSON.objectId,
             title: bookJSON.title,
-            details: bookJSON.details
-          }))
+            details: bookJSON.details,
+            thumbCover: bookJSON.thumb_cover,
+            cover: bookJSON.cover
+
+          });
+
+          book_.fetchThumbCoverImage();
+
+          this.bookList.push(book_)
         }
 
         resolve(this.bookList)
@@ -43,7 +46,7 @@ export default class BooksService{
 
   }
 
-  getAllBooks():Promise<Array<Book>>{
+  getAllBooks():Promise<Book[]>{
 
     if(this.bookList.length == 0){
 

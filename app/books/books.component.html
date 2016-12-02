@@ -1,39 +1,39 @@
 
+<ActionBar title="Catalog">
+
+
+</ActionBar>
 
 <GridLayout class="page">
 
 
-  <ActionBar title="Catalog">
 
 
-  </ActionBar>
 
-  <StackLayout class="page p-t-10" style="color: white">
-    <!--<ActivityIndicator [busy]="isBusy" ></ActivityIndicator>-->
-  </StackLayout>
-
-
-  <StackLayout
-               class="initial-container">
+  <!--<ActivityIndicator [busy]="isBusy" ></ActivityIndicator>-->
 
 
 
 
 
-    <ListView [items]="books"  class="list-group">
 
-      <ListView.itemTemplate>
-        <template  let-book="item">
+  <ListView [items]="books | async"  class="list-group">
 
-          <GridLayout (tap)="showBook(book)" class=" visible list-group-item" >
-            <Label [text]="book.title"  class="label-item"></Label>
-          </GridLayout>
+    <ListView.itemTemplate >
+      <template  let-book="item" >
 
-        </template>
-      </ListView.itemTemplate>
-    </ListView>
+        <StackLayout orientation="horizontal" (tap)="showBook(book)" class=" visible list-group-item" >
+          <Image [src]="book.thumbCoverImage" stretch ="aspectFit" height="60" width="60"></Image>
+          <StackLayout >
+            <Label marginLeft="10" [text]="book.title" textWrap="true"  class="label-item"></Label>
+            <Label marginLeft="10" marginTop="5" color="#696969"  fontSize="12" [text]="book.details"  class="label-item"></Label>
+          </StackLayout>
+        </StackLayout>
 
-  </StackLayout>
+      </template>
+    </ListView.itemTemplate>
+  </ListView>
+
 
 
 

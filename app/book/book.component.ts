@@ -2,8 +2,6 @@ import {Component, OnInit, AfterViewInit} from "@angular/core";
 
 import {ActivatedRoute} from '@angular/router'
 import Book from "./book";
-import {RouterExtensions} from "nativescript-angular";
-import BooksService from "../books/books.service";
 
 
 
@@ -22,7 +20,6 @@ export default class BookComponent implements OnInit, AfterViewInit{
 
   constructor(
     private route:ActivatedRoute,
-    private booksService:BooksService
 
   ){
 
@@ -31,8 +28,7 @@ export default class BookComponent implements OnInit, AfterViewInit{
   ngOnInit(){
 
     this.book = this.route.snapshot.data['book'];
-
-    console.dump(this.book)
+    this.book.fetchCoverImage();
 
     // this.route.params.subscribe(params => {
     //

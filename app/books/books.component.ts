@@ -1,9 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import {Component, OnInit, AfterViewInit, Input, ChangeDetectionStrategy} from "@angular/core";
 import Book from "../book/book";
 import BooksService from "./books.service";
 import {Router} from "@angular/router";
 
-
+import { Observable as RxObservable } from 'rxjs/Observable';
 
 
 @Component({
@@ -12,9 +12,9 @@ import {Router} from "@angular/router";
   styleUrls: ["books/books.component.css"],
 })
 
-export class BooksComponent implements OnInit {
+export class BooksComponent implements OnInit, AfterViewInit{
 
-  books:Array<Book>
+  books:RxObservable<Book[]>;
 
   isBusy:boolean;
 
@@ -25,24 +25,28 @@ export class BooksComponent implements OnInit {
 
 
   showBook(book:Book){
-
-    console.dump(book)
     this.router.navigate(["book",book.objectID])
+  }
+
+  ngAfterViewInit(){
+
+    this.books.subscribe()
+
   }
 
 
 
   ngOnInit(){
+    this.isBusy = true
 
-    this.booksService.getAllBooks()
-        .then((books:Array<Book>) => this.books = books)
-        .catch((e)=> console.dump(e));
+    this.books = RxObservable.create( (subscriber) => {
+
+      this.booksService.getAllBooks()
+          .then( (books:Book[]) => subscriber.next(books));
+
+    });
 
 
-    // this.isBusy = true
-    // this.api.get_all_data().then((res:Array<Country> = []) => {
-    //   this.countries = res
-    //   this.isBusy = false
-    // });
+
   }
 }
