@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-// let dialogs = require("ui/dialogs");
+import BooksService from "../books/books.service";
 
 @Component({
   selector: "app-home",
@@ -11,12 +11,9 @@ import { Router } from "@angular/router";
 export class HomeComponent implements OnInit {
 
   constructor(
-    private router:Router
-  ){
-    // dialogs.confirm("Your message").then(function (result) {
-    //   console.log("Dialog result: " + result);
-    // });
-  }
+    private router:Router,
+    private _:BooksService
+  ){}
 
   showBooks(){
     this.router.navigate(["books"])
@@ -24,10 +21,6 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit(){
-    // this.isBusy = true
-    // this.api.get_all_data().then((res:Array<Country> = []) => {
-    //   this.countries = res
-    //   this.isBusy = false
-    // });
+
   }
 }

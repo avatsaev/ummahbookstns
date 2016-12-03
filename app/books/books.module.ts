@@ -5,6 +5,7 @@ import { NgModule } from "@angular/core";
 import { booksRouting } from "./books.routing";
 import { BooksComponent } from "./books.component";
 import BooksService from "./books.service";
+import {BookItemComponent} from "./book_item.component";
 
 @NgModule({
   providers: [
@@ -16,7 +17,8 @@ import BooksService from "./books.service";
     booksRouting
   ],
   declarations: [
-    BooksComponent
+    BooksComponent,
+    BookItemComponent
   ]
 })
 export class BooksModule { }

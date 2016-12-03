@@ -3,13 +3,15 @@
 
 </ActionBar>
 
+<ScrollView row="0" orientation="vertical">
 
-<StackLayout orientation="vertical" horizontalAlignment="stretch" class="page">
+  <StackLayout orientation="vertical" horizontalAlignment="stretch" class="page">
 
-  <Image [src]="book.coverImage" marginTop="10" marginBottom="10" horizontalAlignment="center" height="300" stretch ="aspectFit" ></Image>
-  <Label [text]="book.title" textAlignment="center" textWrap="true"></Label>
+    <Image [src]="book.coverImage" marginTop="10" marginBottom="10" horizontalAlignment="center" height="300" stretch ="aspectFit" ></Image>
+    <Label [text]="book.title" textAlignment="center" textWrap="true"></Label>
 
-  <Label [text]="book.details" textWrap="true" marginTop="10"></Label>
+    <Label [text]="book.details" class="p-15" textWrap="true" marginTop="10"></Label>
 
 
-</StackLayout>
+  </StackLayout>
+</ScrollView>

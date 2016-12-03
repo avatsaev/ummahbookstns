@@ -39,6 +39,7 @@ export default class Book {
   fetchThumbCoverImage():Promise<ImageSource>{
 
     if(!this.thumbCoverImage || this.thumbCoverImage=="res://CoverThumbPlaceHolder"){
+      console.log("Fetching thumb from server...");
       return getImage(this.thumbCover.url)
           .then((res) => this.thumbCoverImage = res);
     }else{
@@ -49,6 +50,7 @@ export default class Book {
 
   fetchCoverImage():Promise<ImageSource>{
     if(!this.coverImage || this.coverImage=="res://CoverThumbPlaceHolder"){
+      console.log("Fetching cover from server...");
       return getImage(this.cover.url)
           .then((res) => this.coverImage = res);
     }else{

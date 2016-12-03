@@ -6,12 +6,17 @@ import Book from "../book/book";
 
 export default class BooksService{
 
-  private endpointUrl:string = "http://172.18.21.113:8080/";
+  private endpointUrl:string = "http://ub.vatsaev.com:8080/";
 
   bookList:Book[]
 
   constructor(){
     this.bookList = new Array<Book>()
+
+    this.fetchAllBooks().then((books) =>{
+       books.map( book => book.fetchThumbCoverImage())
+    })
+
   }
 
 
@@ -21,21 +26,24 @@ export default class BooksService{
 
       getJSON(`${this.endpointUrl}/books.json`).then(((res:any)=>{
 
-
+        console.log("fetching books from server...")
         for(let bookJSON of res.books){
 
-          let book_ = new Book({
+          this.bookList.push(new Book({
+
             objectID: bookJSON.objectId,
             title: bookJSON.title,
             details: bookJSON.details,
             thumbCover: bookJSON.thumb_cover,
             cover: bookJSON.cover
 
-          });
+          }));
 
-          book_.fetchThumbCoverImage();
 
-          this.bookList.push(book_)
+
+          //this.bookList[book_i].fetchThumbCoverImage()
+
+
         }
 
         resolve(this.bookList)
@@ -49,13 +57,15 @@ export default class BooksService{
   getAllBooks():Promise<Book[]>{
 
     if(this.bookList.length == 0){
-
+      console.log("Get all books: fetch")
       return this.fetchAllBooks()
 
     }else{
+      console.log("Get all books: return")
       return new Promise((resolve)=>{
         resolve(this.bookList)
       })
+
     }
 
   }
