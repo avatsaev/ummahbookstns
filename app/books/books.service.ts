@@ -31,11 +31,21 @@ export default class BooksService{
 
           this.bookList.push(new Book({
 
-            objectID: bookJSON.objectId,
-            title: bookJSON.title,
-            details: bookJSON.details,
-            thumbCover: bookJSON.thumb_cover,
-            cover: bookJSON.cover
+            objectID     :bookJSON.objectId,
+            title        :bookJSON.title,
+            details      :bookJSON.details,
+            thumbCover   :bookJSON.thumb_cover,
+            cover        :bookJSON.cover,
+            epubLink     :bookJSON.epub_link,
+            audioLink    :bookJSON.audio_link,
+            pdfLink      :bookJSON.pdf_link,
+            mobiLink     :bookJSON.mobi_link,
+            quickDetails :bookJSON.quick_details,
+            storeLink    :bookJSON.store_link,
+            category     :bookJSON.category,
+            spotted      :bookJSON.spotted,
+            keywords     :bookJSON.keywords,
+            contentIndex :bookJSON.content_index,
 
           }));
 

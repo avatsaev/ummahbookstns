@@ -3,16 +3,17 @@
 
 </ActionBar>
 
-<StackLayout backgroundColor="#f3f3f3" orientation="vertical" horizontalAlignment="stretch" class="page">
+<StackLayout orientation="vertical" horizontalAlignment="stretch" class="page">
 
   <Image stretch="aspectFit" width="200" marginBottom="40" marginTop="80"
-         src="res://MainLogo"></Image>
+         src="res://MainLogo" class="appear-in"></Image>
 
 
 
-  <Button backgroundColor="#696969" color="#f0f8ff" height="50" class="btn btn-rounded-lg fa" (tap)="showBooks()" [text] = "'\uf03a Catalog'"></Button>
-  <Button backgroundColor="#696969" color="#f0f8ff" height="50" class="btn btn-rounded-lg fa" (tap)="showBooks()" [text] = "'\uf05a Help'"></Button>
-  <Button backgroundColor="#696969" color="#f0f8ff"  height="50"  class="btn btn-rounded-lg fa" [text] = "'\uf29c About'" ></Button>
+
+  <Button backgroundColor="#696969" color="#f0f8ff" height="50" class="btn btn-rounded-lg fa appear-in-1" (tap)="showBooks()" [text] = "'\uf03a Catalog'"></Button>
+  <Button backgroundColor="#696969" color="#f0f8ff" height="50" class="btn btn-rounded-lg fa  appear-in-2" [text] = "'\uf05a Help'"></Button>
+  <Button backgroundColor="#696969" color="#f0f8ff"  height="50"  class="btn btn-rounded-lg fa  appear-in-3" [text] = "'\uf29c About'" ></Button>
 
 
 </StackLayout>

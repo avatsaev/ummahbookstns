@@ -5,11 +5,32 @@ import {Router} from "@angular/router";
 
 @Component({
   selector: "book-item",
+  styles: [`
+    
+    @keyframes appearInLeftAnimaton {
+      from {
+        opacity: 0.0;
+        transform: translate(220, 0);
+      }
+      to {
+        opacity: 1.0;
+        transform: translate(0, 0);
+      }
+    }
+    .appear-in {
+      opacity: 0;
+      animation-name: appearInLeftAnimaton;
+      animation-duration: 480ms;
+      animation-delay: 220ms;
+      animation-timing-function: ease-out;
+    }
+
+  `],
   template: `
 
     <StackLayout (tap)="showBook(book)" 
       orientation="horizontal" 
-      class=" visible list-group-item" 
+      class=" appear-in list-group-item" 
     >
       <Image [src]="book.thumbCoverImage" 
         stretch ="aspectFit" 

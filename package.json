@@ -4,7 +4,7 @@
   "readme": "NativeScript Application",
   "repository": "<fill-your-repository-here>",
   "nativescript": {
-    "id": "com.vatsaev.ummahbookstns",
+    "id": "com.avatsaev.UmmahBooks",
     "tns-ios": {
       "version": "2.4.0"
     },
