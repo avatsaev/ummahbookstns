@@ -5,10 +5,10 @@
   "repository": "<fill-your-repository-here>",
   "nativescript": {
     "id": "com.avatsaev.UmmahBooks",
-    "tns-ios": {
-      "version": "2.4.0"
-    },
     "tns-android": {
+      "version": "2.4.1"
+    },
+    "tns-ios": {
       "version": "2.4.1"
     }
   },
@@ -36,6 +36,7 @@
     "nativescript-dev-android-snapshot": "^0.*.*",
     "nativescript-dev-sass": "^0.4.1",
     "nativescript-dev-typescript": "^0.3.2",
+    "nativescript-dev-webpack": "0.0.20",
     "typescript": "^2.0.10",
     "zone.js": "~0.6.21"
   }
